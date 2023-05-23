@@ -1,0 +1,47 @@
+ext {
+    //android开发版本配置
+    build_android = [
+            compileSdkVersion: 33,
+            applicationId    : "com.soar.roomsdk",
+            minSdkVersion    : 24,
+            targetSdkVersion : 33,
+            versionCode      : 100,
+            versionName      : "v1.0.0",
+    ]
+    //version配置
+    versions = [
+            androidx: "1.4.1"
+    ]
+    //官方组件配置
+    authority = [
+            junit            : "junit:junit:4.13.2",
+            test_runner      : "com.android.support.test:runner:1.1.3",
+            test_espresso    : "com.android.support.test.espresso:espresso-core:3.4.0",
+
+            androidx         : "androidx.appcompat:appcompat:${versions.androidx}",
+            material         : "com.google.android.material:material:1.5.0",
+            ktxCore          : "androidx.core:core-ktx:1.7.0",
+            constraint_layout: "androidx.constraintlayout:constraintlayout:2.1.3",
+            //room
+            room_runtime          : "androidx.room:room-runtime:2.5.0",
+            room_ktx          : "androidx.room:room-ktx:2.5.0",
+            room_compiler          : "androidx.room:room-compiler:2.5.0",
+    ]
+    //依赖第三方配置
+    thirdLibs = [
+            //rxjava2
+            rxjava2               : "io.reactivex.rxjava2:rxjava:2.2.0",
+            rxandroid             : "io.reactivex.rxjava2:rxandroid:2.1.0",
+            //Rxlifecycle2
+            Rxlifecycle2          : "com.trello.rxlifecycle2:rxlifecycle-navi:2.1.0",
+            //gson
+            gson                  : "com.google.code.gson:gson:2.8.5",
+            //Arouter
+            arouter_api           : "com.alibaba:arouter-api:1.4.1",
+            arouter_compiler      : "com.alibaba:arouter-compiler:1.2.2",
+            //rxPermissions
+            rxPermissions         : "com.github.tbruyelle:rxpermissions:0.10.2",
+    ]
+}
+
+

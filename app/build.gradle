@@ -1,0 +1,71 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply plugin: 'kotlin-kapt'
+apply from: "../config.gradle"
+
+android {
+    namespace 'com.soar.sdkdemo'
+    compileSdk build_android.compileSdkVersion
+
+    defaultConfig {
+        applicationId build_android.applicationId
+        minSdk build_android.minSdkVersion
+        targetSdk build_android.targetSdkVersion
+        versionCode build_android.versionCode
+        versionName build_android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(':module-room')
+
+    testImplementation authority.junit
+    androidTestImplementation authority.test_runner
+    androidTestImplementation authority.test_espresso
+
+    implementation authority.ktxCore
+    implementation authority.androidx
+    implementation authority.material
+    implementation authority.constraint_layout
+
+    //rxjava2
+    implementation thirdLibs.rxjava2
+    implementation thirdLibs.rxandroid
+    //Rxlifecycle2
+    implementation thirdLibs.Rxlifecycle2
+    //rxPermissions
+    implementation thirdLibs.rxPermissions
+    //ARouter
+    implementation thirdLibs.arouter_api
+    kapt thirdLibs.arouter_compiler
+}
